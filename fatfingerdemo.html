@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!-- saved from url=(0089)https://pierreqian.users.x20web.corp.google.com/www/no_crawl/mysidia/fat_finger_demo.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width">
+  <title>Fat finger demo</title>
+  <style>
+#container {
+  position: relative;
+  width: 300px;
+  height: 500px;
+  border: solid 1px;
+}
+.position-panel {
+   margin: 10px 30px;      
+}
+.content {
+  display:block;
+  font-size:25px;
+  line-height: 1.5em;
+  padding: 10px 0;
+  margin:30px 5px;
+  border: solid 1px;
+  background-color: grey;
+}
+.selected {
+  background-color: yellow;
+}
+
+A,
+A:visited,
+A:hover,
+A:active{
+  color:inherit;
+  cursor:pointer;
+  text-decoration:inherit;
+}
+  </style>
+
+</head>
+<body>
+<div id="container" class="">
+  <div class="position-panel">X: 259, Y: 226</div>
+  <a class="content span" id="a1">This is an Anchor.</a>
+  <a class="content span selected" id="a2" style="height:50px; overflow:hidden;"><div style="height: 30px;" class="">This is an Anchor in Div.</div></a>
+  <div class="content div" id="div-raw">This is A Div without click listener.</div>
+  <div class="content div" id="div-listen">This is A Div with click listener.</div>
+</div>
+<script>
+  var clickedElement = null;
+  var positionPanel = document.querySelector('.position-panel');
+  var container = document.getElementById('container');
+  container.addEventListener('click', (event) => {
+    console.log(event.target);
+    console.log(event.clientX);
+    console.log(event.clientY);
+    positionPanel.innerText = `X: ${event.clientX}, Y: ${event.clientY}`;
+    if (clickedElement) {
+      clickedElement.classList.toggle("selected");
+    }
+    clickedElement = event.target;
+    event.target.classList.toggle("selected");
+    event.stopImmediatePropagation();
+    event.preventDefault();
+  });
+
+  var divListen = document.getElementById('div-listen');
+  divListen.addEventListener('click', (event) => {});
+  </script>
+
+
+</body></html>
