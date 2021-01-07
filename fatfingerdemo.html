@@ -43,6 +43,7 @@ A:active{
 <div id='container'>
   <div class='position-panel'><span>X: NA, Y: NA</span></div>
   <a class='content span' id='a1'>This is an Anchor.</a>
+  <a class='content span' id='a1-listen'>This is an Anchor with listener.</a>
   <a class='content span' id='a2' style="height:50px; overflow:hidden;"><div style="height:200px;">This is an Anchor in Div.</div></a>
   <div class='content div' id='div-raw'>This is A Div without click listener.</div>
   <div class='content div' id='div-listen'>This is A Div with click listener.</div>
@@ -67,6 +68,8 @@ A:active{
 
   var divListen = document.getElementById('div-listen');
   divListen.addEventListener('click', (event) => {});
+  var aListen = document.getElementById('a1-listen');
+  aListen.addEventListener('click', (event) => {});
   </script>
 </body>
 </html>
